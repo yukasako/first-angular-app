@@ -1,0 +1,20 @@
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 50rem;
+    margin: 2rem auto 2rem auto;
+    text-align: center;
+    background: linear-gradient(
+        to bottom,
+        #9b84b0,
+        #450d80
+    );
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+img{
+    width: 10rem;
+}

@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+    height: 100%;
+}
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background: radial-gradient();
+    color: "c3b3d8";
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
