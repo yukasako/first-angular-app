@@ -11,7 +11,13 @@
 <main>
   <ul id="users">
     <li>
-      <app-user />
+      <!-- 
+        avatarとnameプロパティは子(user.component/app-user)の@Inputで渡されている。
+        プロパティのオブジェクト(users)は親(app.component)で宣言されている。 
+      -->
+      <app-user [avatar]="users[0].avatar" [name]="users[0].name" />
+      <app-user [avatar]="users[1].avatar" [name]="users[1].name" />
+      <app-user [avatar]="users[2].avatar" [name]="users[2].name" />
     </li>
   </ul>
 </main>

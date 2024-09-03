@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
+import { DUMMY_USERS } from './dymmy-users';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,6 @@ import { UserComponent } from './user/user.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'first-angular-app';
+    /// オブジェクトの宣言 ///
+    users = DUMMY_USERS
 }

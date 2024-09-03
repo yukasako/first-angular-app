@@ -1,7 +1,4 @@
-import { Component, computed, signal} from '@angular/core';
-import { DUMMY_USERS } from '../dymmy-users';
-
-const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -10,19 +7,14 @@ const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  // Initialize Signal. このSignal（SelectedUser）が変更されたらUI変更。
-  selectedUser = signal(DUMMY_USERS[randomIndex]);
+  /// @Inputによるオブジェクトのプロパティの指定   
+  @Input() avatar!: string;   
+  @Input() name!: string;
 
-  sadDuck = "sadDuck.jpeg";
-  // get imagePath(){
-  //   return `assets/` + this.sadDuck
-  // }
-  //Signalを使う時はこのように書く。
-  imagePath = computed(()=>`assets/` + this.sadDuck)
-
+  /// getは、クラスのプロパティを取得する際に使うメソッドです。 ///
+  get imagePath(){
+  return `assets/users/` + this.avatar
+ }
   onSelectUser(){
-    const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
-    // クリックしたらSignal変更
-    this.selectedUser.set(DUMMY_USERS[randomIndex])
   }
 }
