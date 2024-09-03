@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { UserComponent } from './user/user.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent], // ここに挿入したいコンポーネントを記載
+  imports: [HeaderComponent, UserComponent], // ここに挿入したいコンポーネントを記載
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

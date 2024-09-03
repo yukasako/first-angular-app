@@ -1,1 +1,8 @@
-<p>user works!</p>
+<div>
+  <button (click)="onSelectUser()">
+    <img [src]="imagePath()" [alt]="selectedUser().name" />
+    <!-- Signalにした際は（）をつけると、そのシクナルに格納したデータにアクセスできる -->
+    <img [src]="selectedUser().avatar" [alt]="selectedUser().name" />
+    <span>{{ selectedUser().name }}</span>
+  </button>
+</div>
