@@ -13,4 +13,8 @@ import { DUMMY_USERS } from './dymmy-users';
 export class AppComponent {
     /// オブジェクトの宣言 ///
     users = DUMMY_USERS
+
+    onSelectUser(id: string){
+      console.log(`Test`+ id)
+    }
 }
