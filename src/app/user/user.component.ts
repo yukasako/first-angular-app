@@ -1,18 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
-// オブジェクトの型指定 pattern 1
-// type User = {
-//   id: string;
-//   avatar: string;
-//   name: string;
-// };
-
-// pattern 2
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
+import { type User } from './user.model';
 
 @Component({
   selector: 'app-user',
