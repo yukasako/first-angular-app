@@ -7,12 +7,12 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  // A, @Input(デコレーター)によるオブジェクトのプロパティの指定 
+  //  @Input(デコレーター)による親から子へのデータ移動
   @Input({required: true}) id!: string;   
   @Input({required: true}) avatar!: string;   
   @Input({required: true}) name!: string;
 
-  // ?? この行は何をしてるの？
+  //  @Output(デコレーター)による子から親へのデータ移動
   @Output() select = new EventEmitter();
 
   /// getは、クラスのプロパティを取得する際に使うメソッドです。 ///
