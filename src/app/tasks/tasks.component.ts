@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { DUMMY_USERS } from '../../dymmy-users';
 import { TaskComponent } from './task/task.component';
+import { InputComponent } from './inputTask/input/input.component';
 
 @Component({
   selector: 'app-tasks', //HTML内のelementの名前
   standalone: true,
   templateUrl: `./tasks.component.html`, //HTML参照先
   styleUrl: `./tasks.component.css`,
-  imports: [TaskComponent],
+  imports: [TaskComponent, InputComponent],
 })
 export class TasksComponent {
   @Input({ required: true }) userId!: string;
@@ -44,7 +45,17 @@ export class TasksComponent {
     },
   ];
 
+  addTask: boolean = false;
+
   get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.userId);
+  }
+
+  onCompleteTask(id: string) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  toggleAddTask() {
+    this.addTask = !this.addTask;
   }
 }

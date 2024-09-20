@@ -10,6 +10,8 @@ import { type User } from './user.model';
 export class UserComponent {
   //  @Input(デコレーター)による親から子へのデータ移動
   @Input({ required: true }) user!: User;
+  @Input({ required: true }) selected!: boolean;
+
   //  @Output(デコレーター)による子から親へのデータ移動
   @Output() select = new EventEmitter();
 
