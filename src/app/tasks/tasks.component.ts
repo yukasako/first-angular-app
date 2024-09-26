@@ -14,6 +14,8 @@ export class TasksComponent {
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
 
+  isAddingTask: boolean = false;
+
   tasks = [
     {
       id: 't1',
@@ -45,8 +47,6 @@ export class TasksComponent {
     },
   ];
 
-  addTask: boolean = false;
-
   get selectedUserTasks() {
     return this.tasks.filter((task) => task.userId === this.userId);
   }
@@ -55,7 +55,11 @@ export class TasksComponent {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
-  toggleAddTask() {
-    this.addTask = !this.addTask;
+  onStartAddTask() {
+    this.isAddingTask = !this.isAddingTask;
+  }
+
+  closeTask(isAddingTask: boolean) {
+    this.isAddingTask = !this.isAddingTask;
   }
 }
