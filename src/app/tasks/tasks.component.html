@@ -7,10 +7,8 @@
   </header>
 
   @if (isAddingTask) {
-    <app-input
-      [isAddingTask]="isAddingTask"
-      (close)="closeTask($event)"
-    ></app-input>
+    <!-- Cancelというイベントを子から受け取り、onCancelAddTaskを発火している。 -->
+    <app-input (cancel)="onCancelAddTask($event)"></app-input>
   }
 
   <ul>

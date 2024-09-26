@@ -59,7 +59,7 @@ export class TasksComponent {
     this.isAddingTask = !this.isAddingTask;
   }
 
-  closeTask(isAddingTask: boolean) {
-    this.isAddingTask = !this.isAddingTask;
+  onCancelAddTask() {
+    this.isAddingTask = false;
   }
 }

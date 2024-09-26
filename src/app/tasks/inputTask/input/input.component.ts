@@ -1,19 +1,22 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { TasksComponent } from '../../tasks.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [TasksComponent],
+  imports: [FormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
 })
 export class InputComponent {
-  @Input({ required: true }) isAddingTask!: boolean;
-  @Output() close = new EventEmitter();
+  enteredTitle = '';
+  enteredSummary = '';
+  enteredDate = '';
 
-  closeTask() {
-    this.close.emit(this.isAddingTask);
-    console.log(this.isAddingTask);
+  // cancelというイベントを作成。
+  @Output() cancel = new EventEmitter<void>();
+  onCancel() {
+    //　cancelというイベントを親へ発している。
+    this.cancel.emit();
   }
 }
