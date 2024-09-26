@@ -8,7 +8,7 @@
 
   @if (isAddingTask) {
     <!-- Cancelというイベントを子から受け取り、onCancelAddTaskを発火している。 -->
-    <app-input (cancel)="onCancelAddTask($event)"></app-input>
+    <app-input (cancel)="onCancelAddTask()"></app-input>
   }
 
   <ul>
