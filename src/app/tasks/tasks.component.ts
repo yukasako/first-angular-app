@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { DUMMY_USERS } from '../../dymmy-users';
 import { TaskComponent } from './task/task.component';
 import { InputComponent } from './inputTask/input/input.component';
+import { NewTask } from './task/task.model';
 
 @Component({
   selector: 'app-tasks', //HTML内のelementの名前
@@ -60,6 +61,17 @@ export class TasksComponent {
   }
 
   onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onAddTask(newTaskData: NewTask) {
+    this.tasks.push({
+      id: new Date().getTime().toString(), //仮に設定。ベストではない。
+      userId: this.userId,
+      title: newTaskData.title,
+      summary: newTaskData.summary,
+      dueDate: newTaskData.date,
+    });
     this.isAddingTask = false;
   }
 }

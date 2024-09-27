@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NewTask } from '../../task/task.model';
 
 @Component({
   selector: 'app-input',
@@ -18,5 +19,14 @@ export class InputComponent {
   onCancel() {
     //　cancelというイベントを親へ発している。
     this.cancel.emit();
+  }
+
+  @Output() add = new EventEmitter<NewTask>();
+  onSubmit() {
+    this.add.emit({
+      title: this.enteredTitle,
+      summary: this.enteredSummary,
+      date: this.enteredDate,
+    });
   }
 }
