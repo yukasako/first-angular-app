@@ -1,6 +1,7 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NewTask } from '../../task/task.model';
+import { TasksService } from '../../tasks.service';
 
 @Component({
   selector: 'app-input',
@@ -10,23 +11,29 @@ import { NewTask } from '../../task/task.model';
   styleUrl: './input.component.css',
 })
 export class InputComponent {
+  @Input({ required: true }) userId!: string;
+
   enteredTitle = '';
   enteredSummary = '';
   enteredDate = '';
+  private tasksService = inject(TasksService);
 
   // cancelというイベントを作成。
-  @Output() cancel = new EventEmitter<void>();
+  @Output() close = new EventEmitter<void>();
   onCancel() {
     //　cancelというイベントを親へ発している。
-    this.cancel.emit();
+    this.close.emit();
   }
 
-  @Output() add = new EventEmitter<NewTask>();
   onSubmit() {
-    this.add.emit({
-      title: this.enteredTitle,
-      summary: this.enteredSummary,
-      date: this.enteredDate,
-    });
+    this.tasksService.addTask(
+      {
+        title: this.enteredTitle,
+        summary: this.enteredSummary,
+        date: this.enteredDate,
+      },
+      this.userId,
+    );
+    this.close.emit();
   }
 }
