@@ -1,6 +1,8 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, inject } from '@angular/core';
 import { type Task } from './task.model';
 import { DatePipe } from '@angular/common';
+import { TasksService } from '../tasks.service';
+
 @Component({
   selector: 'app-task',
   standalone: true,
@@ -10,9 +12,12 @@ import { DatePipe } from '@angular/common';
 })
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
-  @Output() complete = new EventEmitter<string>();
+
+  private tasksService = inject(TasksService);
+  // Injectionを使った上の書き方でも、constructorを使った下の書き方でも良い。
+  // constructor(private tasksService: TasksService) {}
 
   onCompleteTask() {
-    this.complete.emit(this.task.id);
+    this.tasksService.removeTask(this.task.id);
   }
 }
