@@ -1,15 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { TaskComponent } from './task/task.component';
-import { InputComponent } from './inputTask/input/input.component';
-import { NewTask } from './task/task.model';
+// import { TaskComponent } from './task/task.component';
+// import { InputComponent } from './inputTask/input/input.component';
 import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks', //HTML内のelementの名前
-  standalone: true,
+  // standalone: true,
   templateUrl: `./tasks.component.html`, //HTML参照先
   styleUrl: `./tasks.component.css`,
-  imports: [TaskComponent, InputComponent],
+  // imports: [TaskComponent, InputComponent],
 })
 export class TasksComponent {
   @Input({ required: true }) userId!: string;
